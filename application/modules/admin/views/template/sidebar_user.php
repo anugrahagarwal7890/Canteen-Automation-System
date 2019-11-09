@@ -1,7 +1,8 @@
 <?php
 $tab = isset($tab) ? $tab : "";
 $page = isset($page) ? $page : "";
-$food="";
+$food=$category="";
+
 $dashboard=$materials ="";
 $user_management = $users=$feedback=$year= "";
 $cart_management=$cart=$today_cart=$cart_with_payment="";
@@ -15,13 +16,6 @@ if ($tab=='dashboard')
 	if ($page == "users")
 	{
 		$users = "active";
-	}else if ($page=='year')
-	{
-		$year="active";
-	}
-	elseif ($page=='today_cart')
-	{
-		$today_cart="active";
 	}
 }else if($tab=='cart_management')
 {
@@ -37,15 +31,19 @@ if ($tab=='dashboard')
 	{
 		$cart_with_payment="active";
 	}
-}else if($tab=='food')
+}else if($tab=='year')
+{
+	$year="active";
+}
+else if($tab=='food')
 {
 	$food="active";
 }else if($tab=='feedback')
 {
 	$feedback="active";
-}else if($tab=='gallery')
+}else if($tab=='category')
 {
-	$gallery="active";
+	$category="active";
 }
 ?>
 
@@ -78,7 +76,7 @@ if ($tab=='dashboard')
                     </span>
 				</a>
 				<ul class="treeview-menu">
-					<li class="<?= $users ?>"><a href="<?= ANUGRAH_URL . 'users/index' ?>"><i class="fa fa-circle-o"></i> Customer Details</a></li>
+					<li class="<?=$users ?>"><a href="<?= ANUGRAH_URL . 'users/index' ?>"><i class="fa fa-circle-o"></i> Customer Details</a></li>
 				</ul>
 			</li>
 
@@ -105,6 +103,11 @@ if ($tab=='dashboard')
 			<li class="<?=$year?>">
 				<a href="<?= ANUGRAH_URL . "users/year" ?>">
 					<i class="fa fa-circle-o"></i> <span>Student Year</span>
+				</a>
+			</li>
+			<li class="<?=$category?>">
+				<a href="<?= ANUGRAH_URL . "food/category" ?>">
+					<i class="fa fa-circle"></i> <span>Food Category</span>
 				</a>
 			</li>
 			<li class="<?=$feedback?>">

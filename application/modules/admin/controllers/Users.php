@@ -30,8 +30,7 @@ class Users extends MX_Controller
 	public function year()
 	{
 		$view_data['result'] = $this->Users_model->year();
-		$view_data['tab'] = "activity management";
-		$view_data['page'] = "year";
+		$view_data['tab'] = "year";
 		$data['page_data'] = $this->load->view('users/year', $view_data, TRUE);
 		$data['page_title'] = "Year";
 		echo Modules::run(ANUGRAH_TEMPLATE, $data);

@@ -11,12 +11,12 @@ class Dashboard extends MX_Controller {
 
     private function get_data() {
         $return['total_users'] = $this->db->query("select count(id) as total from users where status=1 and user_type=2")->row()->total;
-//        $return['total_club'] = $this->db->query("select count(id) as total from club where status=1")->row()->total;
-//        $return['total_event'] = $this->db->query("select count(id) as total from event where status=1")->row()->total;
-//        $return['total_team'] = $this->db->query("select count(id) as total from team where status=1")->row()->total;
-//        $return['total_course'] = $this->db->query("select count(id) as total from course where status=1")->row()->total;
-//        $return['total_branch'] = $this->db->query("select count(id) as total from branch where status=1")->row()->total;
-//        $return['feedback'] = $this->db->query("select count(id) as total from feedback where status=1")->row()->total;
+        $return['total_food'] = $this->db->query("select count(id) as total from food where status=1")->row()->total;
+		$return['not_confirm_cart'] = $this->db->query("select count(id) as total from cart where status=1 and transaction=2")->row()->total;
+		$return['confirm_cart'] = $this->db->query("select count(id) as total from cart where status=1 and transaction=1")->row()->total;
+		$return['total_today_cart'] = $this->db->query("select count(id) as total from cart where status=1 and from_unixtime(modify, '%Y-%d-%m')='". date("Y-d-m")."'")->row()->total;
+		$return['category'] = $this->db->query("select count(id) as total from category where status=1")->row()->total;
+        $return['feedback'] = $this->db->query("select count(id) as total from feedback where status=1")->row()->total;
         return $return;
     }
 
