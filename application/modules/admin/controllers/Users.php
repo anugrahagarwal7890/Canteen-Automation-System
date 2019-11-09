@@ -19,7 +19,7 @@ class Users extends MX_Controller
 		$view_data['year']=$this->Users_model->get_year();
         $view_data['page'] = "users";
         $data['page_data'] = $this->load->view('users/users', $view_data, TRUE);
-        $data['page_title'] = "CUSTOMER";
+        $data['page_title'] = "Customer";
         echo Modules::run(ANUGRAH_TEMPLATE, $data);
     }
 	function ajax_student_list()

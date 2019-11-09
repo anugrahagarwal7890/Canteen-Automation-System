@@ -1,7 +1,7 @@
 <?php
 $tab = isset($tab) ? $tab : "";
 $page = isset($page) ? $page : "";
-
+$food="";
 $dashboard=$materials ="";
 $user_management = $users=$feedback=$year= "";
 $cart_management=$cart=$today_cart=$cart_with_payment="";
@@ -39,7 +39,7 @@ if ($tab=='dashboard')
 	}
 }else if($tab=='food')
 {
-	$materials="active";
+	$food="active";
 }else if($tab=='feedback')
 {
 	$feedback="active";
@@ -79,13 +79,12 @@ if ($tab=='dashboard')
 				</a>
 				<ul class="treeview-menu">
 					<li class="<?= $users ?>"><a href="<?= ANUGRAH_URL . 'users/index' ?>"><i class="fa fa-circle-o"></i> Customer Details</a></li>
-					<li class="<?= $year ?>"><a href="<?= ANUGRAH_URL . 'users/year' ?>"><i class="fa fa-circle-o"></i>Year</a></li>
 				</ul>
 			</li>
 
-			<li class="<?=$materials?>">
+			<li class="<?=$food?>">
 				<a href="<?= ANUGRAH_URL . "food/index" ?>">
-					<i class="fa fa-user-o"></i> <span>Materials</span>
+					<i class="fa fa-user-o"></i> <span>Food</span>
 				</a>
 			</li>
 
@@ -101,16 +100,16 @@ if ($tab=='dashboard')
 					<li class="<?= $cart_with_payment ?>"><a href="<?= ANUGRAH_URL . 'cart/cart_with_payment' ?>"><i class="fa fa-circle-o"></i>Confirm Order</a></li>
 					<li class="<?= $cart ?>"><a href="<?= ANUGRAH_URL . 'cart/index' ?>"><i class="fa fa-circle-o"></i>Without Confirm Order</a></li>
 				</ul>
-			</li>
 
+			</li>
+			<li class="<?=$year?>">
+				<a href="<?= ANUGRAH_URL . "users/year" ?>">
+					<i class="fa fa-circle-o"></i> <span>Student Year</span>
+				</a>
+			</li>
 			<li class="<?=$feedback?>">
 				<a href="<?= ANUGRAH_URL . "feedback/index" ?>">
 					<i class="fa fa-user-o"></i> <span>Feedback</span>
-				</a>
-			</li>
-			<li class="<?=$gallery?>">
-				<a href="<?= ANUGRAH_URL . "gallery/index" ?>">
-					<i class="fa fa-user-o"></i> <span>Gallery</span>
 				</a>
 			</li>
 		</ul>
