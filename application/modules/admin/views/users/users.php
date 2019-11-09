@@ -5,7 +5,7 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form" method="post" action="<?= ABACUS_URL . "users/index" ?>">
+        <form role="form" method="post" action="<?= ANUGRAH_URL . "users/index" ?>">
             <?= (isset($result['users']['id'])) ? "<input hidden name='id' value='" . $result['users']['id'] . "'>" : "" ?>
             <div class="box-body">
                 <div class="row">
@@ -46,63 +46,6 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Member</label>
-                            <div class="clearfix"></div>
-                            <select class="form-control" name="member_id">
-                                <option value="" selected>Select</option>
-                                <?php
-                                if (isset($member) && $member) {
-                                    foreach ($member as $co)
-                                    {
-                                        ?>
-                                        <option <?= (isset($result['users']) && $result['users']['member_id']==$co["id"]) ? "SELECTED" : "" ?> value="<?= ($co)?$co["id"]:""?>"><?= $co['name'] ?></option>
-                                        <?php
-                                    }
-                                }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Course</label>
-                            <div class="clearfix"></div>
-                            <select class="form-control" name="course_id">
-                                <option value="" selected>Select</option>
-                                <?php
-                                if (isset($course) && $course) {
-                                    foreach ($course as $co)
-                                    {
-                                        ?>
-                                        <option <?= (isset($result['users']) && $result['users']['course_id']==$co["id"]) ? "SELECTED" : "" ?> value="<?= ($co)?$co["id"]:""?>"><?= $co['course'] ?></option>
-                                        <?php
-                                    }
-                                }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Branch</label>
-                            <div class="clearfix"></div>
-                            <select class="form-control" name="branch_id">
-                                <option value="" selected>Select</option>
-                                <?php
-                                if (isset($branch) && $branch) {
-                                    foreach ($branch as $br)
-                                    {
-                                        ?>
-                                        <option <?= (isset($result['users']) && $result['users']['branch_id']==$br["id"]) ? "SELECTED" : "" ?> value="<?= ($br)?$br["id"]:""?>"><?= $br['branch'] ?></option>
-                                        <?php
-                                    }
-                                }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Year</label>
@@ -150,12 +93,9 @@
                     <tr>
                         <th>Id</th>
                         <th>University Roll</th>
-                        <th>Member</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Mobile Number</th>
-                        <th>Branch</th>
-                        <th>Course</th>
                         <th>Year</th>
                         <th>Action</th>
                     </tr>
@@ -169,9 +109,6 @@
                         <th><input class="form-control input-sm search-input-text" data-column="3"></th>
                         <th><input class="form-control input-sm search-input-text" data-column="4"></th>
                         <th><input class="form-control input-sm search-input-text" data-column="5"></th>
-                        <th><input class="form-control input-sm search-input-text" data-column="6"></th>
-                        <th><input class="form-control input-sm search-input-text" data-column="7"></th>
-                        <th><input class="form-control input-sm search-input-text" data-column="8"></th>
                         <th></th>
                     </tr>
                     </thead>
@@ -193,7 +130,7 @@
             }],
             order: [[0, "desc"]],
             ajax: {
-                url: "<?= ABACUS_URL ?>users/ajax_student_list", // json datasource
+                url: "<?= ANUGRAH_URL ?>users/ajax_student_list", // json datasource
                 type: "post", // method  , by default get
                 error: function () {  // error handling
                     $("." + table + "-error").html("");

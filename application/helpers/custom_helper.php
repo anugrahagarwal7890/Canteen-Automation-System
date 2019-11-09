@@ -35,20 +35,20 @@ if(!function_exists("return_data"))
 
 if(!function_exists("upload_meta"))
 {
-    function upload_meta($file_name)
-    {
-        $target_dir = getcwd()."\uploads\\";
-        /*Rename file*/
-        $new_name = explode('.',$_FILES[$file_name]['name']);//taking extension of file
-        $new_name = time().".".end($new_name);//renaming file
+	function upload_meta($file_name)
+	{
+		$target_dir = getcwd()."\uploads\\";
+		/*Rename file*/
+		$new_name = explode('.',$_FILES[$file_name]['name']);//taking extension of file
+		$new_name = time().".".end($new_name);//renaming file
 
-        $target_file = $target_dir . $new_name;
-        if (move_uploaded_file($_FILES[$file_name]["tmp_name"], $target_file))
-        {
-            return base_url()."uploads/".$new_name;
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-            die;
-        }
-    }
+		$target_file = $target_dir . $new_name;
+		if (move_uploaded_file($_FILES[$file_name]["tmp_name"], $target_file))
+		{
+			return base_url()."uploads/".$new_name;
+		} else {
+			echo "Sorry, there was an error uploading your file.";
+			die;
+		}
+	}
 }
