@@ -52,21 +52,29 @@ class Home_model extends CI_Model {
 		$this->db->insert('feedback',$input);
 		return TRUE;
 	}
+
 	function today_order($input)
 	{
 		$id=$input["user_id"];
-		$sql = "SELECT food.name as food_name,food.image as image,cart.total_price as total_price,cart.quantity as quantity,cart.order_number as order_number from cart join food on cart.food_id=food.id where cart.transaction=1 and cart.user_id='.$id.' and from_unixtime(cart.modify,'%Y-%d-%m')=".date('Y-d-m');
+		//$sql = "SELECT food.name as food_name,food.image as image,cart.total_price as total_price,cart.quantity as quantity,cart.order_number as order_number from cart join food on cart.food_id=food.id where cart.transaction=1 and cart.user_id='.$id.' and from_unixtime(cart.modify,'%Y-%d-%m')=".date('Y-d-m');
+		$sql="SELECT food.name as food_name,food.image as image,cart.total_price as total_price,cart.quantity as quantity,cart.order_number as order_number from cart join food on cart.food_id=food.id where cart.transaction=1 and cart.user_id=".$id;
 		$data=$this->db->query($sql)->result_array();
-		return_data(TRUE,"TODAY CART",$data);
+		if($data)
+		{
+			return_data(TRUE,"TODAY CART",$data);
+		}
+		else
+		{
+			return_data(FALSE,"No TODAY CART",[]);
+		}
 	}
 	function cart($input)
 	{
 		$input["status"] = 1;
 		$input["created"] = time();
-		$material=$input["food_id"];
-		$sql="select price from food where id='$material'";
-		$price=$this->db->query($sql)->result_array();
-		$price=$price[0]['price'];
+		$sql="select price from food where id='".$input["food_id"]."'";
+		$price=$this->db->query($sql)->row_array();
+		$price=$price['price'];
 		$quantity=$input["quantity"];
 		$input["total_price"]=$price* $quantity;
 		$id=$input["cart_id"];

@@ -121,7 +121,7 @@ class Home extends MX_Controller {
         $this->form_validation->set_rules('cart_id','cart_id','trim|required');
         if ($this->form_validation->run()==FALSE)
         {
-            return_data(FALSE,array_values($this->form_validation->get_all_erros()),[]);
+			return_data(FALSE, array_values($this->form_validation->get_all_errors()), []);
         }
         return $this->input->post();
     }
