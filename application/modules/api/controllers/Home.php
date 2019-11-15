@@ -23,6 +23,15 @@ class Home extends MX_Controller {
         }
         return $this->input->post();
     }
+
+	public function profile() {
+		$input = $this->validate_get_home_user();
+		if ($input) {
+			$this->Home_model->profile($input);
+		}
+	}
+
+
 	function validate_food() {
 		$this->form_validation->set_rules('user_id', 'user_id', 'trim|required');
 		$this->form_validation->set_rules('category_id', 'category_id', 'trim|required');

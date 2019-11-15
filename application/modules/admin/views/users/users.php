@@ -14,7 +14,7 @@
                             <label>University Roll No.</label>
                             <input type="number" class="form-control" required="" placeholder="Enter University Roll"
                                    name="university_roll"
-                                   value="<?= ($result) ? $result['users']["university_roll"] : "" ?>">
+                                   value="<?= ($result) ? $result['users']["universityrollno"] : "" ?>">
                         </div>
                     </div>
                     <div class="col-md-4">

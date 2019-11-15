@@ -27,6 +27,18 @@ class Home_model extends CI_Model {
     }
 
 
+    function profile($input)
+	{
+		$sql="select users.*,year.name as year from users join year on users.year_id=year.id where 1 and users.id=".$input['user_id'];
+		$data=$this->db->query($sql)->row_array();
+		if ($data)
+		{
+			return_data(TRUE,"PROFILE FOUND",$data);
+		}
+		else{
+			return_data(FALSE,"No PROFILE FOUND",[]);
+		}
+	}
     function category($input)
     {
         return $this->db->get('category')->result_array();

@@ -109,7 +109,9 @@ class Users_model extends CI_Model {
         $id=$input["user_id"];
         $this->db->where('id', $input['user_id']);
         $this->db->update('users', array('password' => md5($input['password'])));
-        return_data(TRUE, "Password Changed", []);
+		$this->db->where('id', $input['user_id']);
+        $data=$this->db->get('users')->result_array();
+        return_data(TRUE, "Password Changed", $data);
     }
 
 
